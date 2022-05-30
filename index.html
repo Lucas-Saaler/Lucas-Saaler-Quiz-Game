@@ -5,18 +5,37 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
-    <link rel="stylesheet" href="./assets/reset.css">
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
     <header>
-        <span id="highscore">High Score:</span><span id="timeleft">Time Left:</span>
+        <span id="highscore">High Score: <span id="score">0</span></span><span id="timeleft">Time Left: <span id="time">0</span></span>
     </header>
     <main>
-        <section id="startup"></section>
-        <section id="questions">Test Questions</section>
-        <section id="initials">Test Input</section>
-        <section id="leaderboard">Test Leaderboard</section>
+        <section id="startup">
+            <h2>Test Quiz</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, reprehenderit voluptatibus quam corporis quasi autem tenetur nemo unde? Iure esse odio neque delectus accusantium, veritatis totam beatae iusto impedit animi.</p>
+            <button id="start-quiz">Start Quiz!</button>
+        </section>
+        <section id="questions" class="hide">
+            <h3>Question 1</h3>
+            <ul>
+                <li><button id="answer1">Test 1</button></li>
+                <li><button id="answer2">Test 2</button></li>
+                <li><button id="answer3">Test 3</button></li>
+                <li><button id="answer4">Test 4</button></li>
+            </ul>
+        </section>
+        <section id="initials" class="hide">
+            <input type="text" id="enter-inits">
+            <button id="save">Save</button>
+        </section>
+        <section id="leaderboard" class="hide">
+            <ul>
+                <li>Score 1</li>
+                <li>Score 2</li>
+            </ul>
+        </section>
     </main>
 </body>
 </html>
