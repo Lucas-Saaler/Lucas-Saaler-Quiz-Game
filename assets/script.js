@@ -28,25 +28,25 @@ var enteredInits
 var finalTime
 var finalScore
 var question=[{
-    title:"New question 1",
-    answers:["answer1", "answer2", "answer3", "answer4"],
-    solution: "answer2"
+    title:"2 + 2 = ?",
+    answers:["1", "4", "6", "2,000"],
+    solution: "4"
 },{
-    title:"New question 2",
-    answers:["answer21", "answer22", "answer23", "answer24"],
-    solution: "answer21"
+    title:"2 + 2 * 4 = ?",
+    answers:["10", "16", "20", "4"],
+    solution: "10"
 },{
-    title:"New question 3",
-    answers:["answer31", "answer32", "answer33", "answer34"],
-    solution: "answer33"
+    title:"(2 * 10) / 4 = ?",
+    answers:["10", "20", "5", "45"],
+    solution: "5"
 },{
-    title:"New question 4",
-    answers:["answer41", "answer42", "answer43", "answer44"],
-    solution: "answer44"
+    title:"(5 + 5) * 2 = ?",
+    answers:["10", "4", "5", "20"],
+    solution: "20"
 },{
-    title:"New question 5",
-    answers:["answer51", "answer52", "answer53", "answer54"],
-    solution: "answer51"
+    title:"11 * 11 = ?",
+    answers:["121", "122", "111", "1,111"],
+    solution: "121"
 }]
 
 var index = 0
