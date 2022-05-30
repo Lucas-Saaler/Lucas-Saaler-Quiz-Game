@@ -5,19 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz</title>
+    <!-- CSS link -->
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
     <header>
+        <!-- High score and timer -->
         <span id="highscore">High Score: <span id="score"></span></span><span id="timeleft">Time Left: <span id="time">75</span></span>
     </header>
     <main>
+        <!-- Start screen -->
         <section id="startup">
             <h2>Math Quiz</h2>
             <p>This quiz will run you through a few simple math questions in order to test your ability to calculate their solutions while on a timer.</p>
             <button id="start-quiz">Start Quiz!</button>
         </section>
+        <!-- Question display -->
         <section id="questions" class="hide">
+            <!-- Temporary question replaced by JS -->
             <h3 id="question-title">Question 1</h3>
             <ul>
                 <li><button id="answer1">Test 1</button></li>
@@ -26,10 +31,12 @@
                 <li><button id="answer4">Test 4</button></li>
             </ul>
         </section>
+        <!-- Initials input -->
         <section id="initials" class="hide">
             <input type="text" id="enter-inits">
             <button id="save">Save</button>
         </section>
+        <!-- Leaderboard -->
         <section id="leaderboard" class="hide">
             <ol>
                 <li id="first-place">0</li>
@@ -39,6 +46,7 @@
     </main>
 </body>
 
+<!-- JS link -->
 <script src="./assets/script.js"></script>
 
 </html>

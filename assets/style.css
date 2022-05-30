@@ -1,16 +1,19 @@
-
+/* Sets the parent of the score and timer to flex display */
 header{
     display:flex;
 }
 
+/* Hides anything with the hide class. When you open the site, it will be everything after the title screen. This will be updated dynamically via JS */
 .hide{
     display:none;
 }
 
+/* Sets the position of the High Score tracker */
 #highscore{
     width:80%;
 }
 
+/* Sets the position of the timer */
 #timeleft{
     width:20%;
 }
