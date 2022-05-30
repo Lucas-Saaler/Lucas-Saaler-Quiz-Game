@@ -1,0 +1,15 @@
+header{
+    display:flex;
+}
+
+.hide{
+    display:none;
+}
+
+#highscore{
+    width:80%;
+}
+
+#timeleft{
+    width:20%;
+}
