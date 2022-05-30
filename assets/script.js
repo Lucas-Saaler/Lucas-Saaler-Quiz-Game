@@ -14,6 +14,13 @@ var answer3El = document.querySelector("#answer3")
 var answer4El = document.querySelector("#answer4")
 var saveEl = document.querySelector("#save")
 var enterInitsEl = document.querySelector("#enter-inits")
+var firstPlaceEl = document.querySelector("#first-place")
+var secondPlaceEl = document.querySelector("#second-place")
+var hasPlayed = localStorage.getItem("hasPlayed")
+var localFirstInits = localStorage.getItem("firstInits")
+var localFirstTime = localStorage.getItem("firstTime")
+var localSecondInits = localStorage.getItem("secondInits")
+var localSecondTime = localStorage.getItem("secondTime")
 
 var timeRemaining = 74
 var clockid
@@ -60,13 +67,22 @@ function startQuiz(){
     startupEl.classList.add("hide")
     clockid=setInterval(countDown, 1000)
     displayQuestions()
+    if(hasPlayed != 1){
+        scoreEl.textContent = 0
+        firstPlaceEl.textContent = "0"
+        secondPlaceEl.textContent = "0"
+    }else{
+        firstPlaceEl.textContent = localFirstInits + " " + localFirstTime
+        secondPlaceEl.textContent = localSecondInits + " " + localSecondTime
+        scoreEl.textContent = firstPlaceEl.textContent
+    }
 }
 
 function displayInput(){
     questionsEl.classList.add("hide")
     initialsEl.classList.remove("hide")
     clearInterval(clockid);
-    // finalTime = timeEl.textContent
+    finalTime = timeEl.textContent
 }
 
 function displayQuestions(){
@@ -119,7 +135,32 @@ function displayLeaderboard(){
     initialsEl.classList.add("hide")
     leaderboardEl.classList.remove("hide")
     finalScore = enteredInits + " " + finalTime
-    scoreEl.textContent = finalScore
+    firstPlaceEl.textContent = firstPlaceEl
+    if (hasPlayed == 1){
+        if (finalTime >= localFirstTime){
+            secondPlaceEl.textContent = localFirstInits + " " + localFirstTime
+            localStorage.setItem("secondInits", localFirstInits)
+            localStorage.setItem("secondTime", localFirstTime)
+            firstPlaceEl.textContent = finalScore
+            localStorage.setItem("firstInits", enteredInits)
+            localStorage.setItem("firstTime", finalTime)
+        }else if (finalTime < localFirstTime && finalTime >= localSecondTime){
+            secondPlaceEl.textContent = finalScore
+            firstPlaceEl.textContent = localFirstInits + " " + localFirstTime
+            localStorage.setItem("secondInits", enteredInits)
+            localStorage.setItem("secondTime", finalTime)
+        }
+    }else{
+        localStorage.setItem("hasPlayed", 1)
+        localStorage.setItem("firstInits", enteredInits)
+        localStorage.setItem("firstTime", finalTime)
+        localStorage.setItem("secondInits", 0)
+        localStorage.setItem("secondTime", 0)
+        secondPlaceEl.textContent = 0
+        firstPlaceEl.textContent = finalScore
+        scoreEl.textContent = finalScore
+    }    
+    scoreEl.textContent = firstPlaceEl.textContent
 }
 
 startQuizEl.addEventListener("click", startQuiz)
