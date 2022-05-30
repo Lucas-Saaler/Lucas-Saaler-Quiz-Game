@@ -22,19 +22,19 @@ var question=[{
 },{
     title:"New question 2",
     answers:["answer21", "answer22", "answer23", "answer24"],
-    solution: "answer22"
+    solution: "answer21"
 },{
     title:"New question 3",
     answers:["answer31", "answer32", "answer33", "answer34"],
-    solution: "answer32"
+    solution: "answer33"
 },{
     title:"New question 4",
     answers:["answer41", "answer42", "answer43", "answer44"],
-    solution: "answer42"
+    solution: "answer44"
 },{
     title:"New question 5",
     answers:["answer51", "answer52", "answer53", "answer54"],
-    solution: "answer52"
+    solution: "answer51"
 }]
 
 var index = 0
@@ -42,19 +42,10 @@ var index = 0
 function countDown(){
     timeEl.textContent=timeRemaining
     timeRemaining--
-}
-
-function displayQuestions(){
-    questionTitleEl.textContent=question[index].title
-    answer1El.textContent=question[index].answers[0]
-    answer2El.textContent=question[index].answers[1]
-    answer3El.textContent=question[index].answers[2]
-    answer4El.textContent=question[index].answers[3]
-}
-
-function nextQuestion(){
-    index++
-    displayQuestions()
+    if (timeRemaining <= 0){
+        clearInterval(clockid);
+        timeEl.textContent = 0
+    }
 }
 
 function startQuiz(){
@@ -64,8 +55,59 @@ function startQuiz(){
     displayQuestions()
 }
 
-answer1El.addEventListener("click", nextQuestion)
-answer2El.addEventListener("click", nextQuestion)
-answer3El.addEventListener("click", nextQuestion)
-answer4El.addEventListener("click", nextQuestion)
+function displayInput(){
+    questionsEl.classList.add("hide")
+    initialsEl.classList.remove("hide")
+    clearInterval(clockid);
+}
+
+function displayQuestions(){
+    if (index <= 4){
+        questionTitleEl.textContent=question[index].title
+        answer1El.textContent=question[index].answers[0]
+        answer2El.textContent=question[index].answers[1]
+        answer3El.textContent=question[index].answers[2]
+        answer4El.textContent=question[index].answers[3]
+    }else{
+        displayInput()
+    }    
+}
+
+function checkAnswer1(){
+    if (question[index].answers[0] != question[index].solution){
+        timeRemaining = timeRemaining - 15
+    }
+    nextQuestion()
+}
+
+function checkAnswer2(){
+    if (question[index].answers[1] != question[index].solution){
+        timeRemaining = timeRemaining - 15
+    }
+    nextQuestion()
+}
+
+function checkAnswer3(){
+    if (question[index].answers[2] != question[index].solution){
+        timeRemaining = timeRemaining - 15
+    }
+    nextQuestion()
+}
+
+function checkAnswer4(){
+    if (question[index].answers[3] != question[index].solution){
+        timeRemaining = timeRemaining - 15
+    }
+    nextQuestion()
+}
+
+function nextQuestion(){
+    index++
+    displayQuestions()
+}
+
 startQuizEl.addEventListener("click", startQuiz)
+answer1El.addEventListener("click", checkAnswer1)
+answer2El.addEventListener("click", checkAnswer2)
+answer3El.addEventListener("click", checkAnswer3)
+answer4El.addEventListener("click", checkAnswer4)
