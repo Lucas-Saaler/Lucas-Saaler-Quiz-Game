@@ -167,7 +167,11 @@ function displayLeaderboard(){
             firstPlaceEl.textContent = localFirstInits + " " + localFirstTime
             localStorage.setItem("secondInits", enteredInits)
             localStorage.setItem("secondTime", finalTime)
-        } //else nothing. You don't make the leaderboard
+        // If you don't place, then the values remain the same.    
+        }else{
+            firstPlaceEl.textContent = localFirstInits + " " + localFirstTime
+            secondPlaceEl.textContent = localSecondInits + " " + localSecondTime
+        }
     //if the user hasn't played before, then they will automatically be put in first place, and 0 will be scored as the second place local storage value. 
     }else{
         localStorage.setItem("hasPlayed", 1)
