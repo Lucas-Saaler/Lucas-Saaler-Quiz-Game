@@ -12,9 +12,14 @@ var answer1El = document.querySelector("#answer1")
 var answer2El = document.querySelector("#answer2")
 var answer3El = document.querySelector("#answer3")
 var answer4El = document.querySelector("#answer4")
+var saveEl = document.querySelector("#save")
+var enterInitsEl = document.querySelector("#enter-inits")
 
 var timeRemaining = 74
 var clockid
+var enteredInits
+var finalTime
+var finalScore
 var question=[{
     title:"New question 1",
     answers:["answer1", "answer2", "answer3", "answer4"],
@@ -45,6 +50,8 @@ function countDown(){
     if (timeRemaining <= 0){
         clearInterval(clockid);
         timeEl.textContent = 0
+        questionsEl.classList.add("hide")
+        displayInput()
     }
 }
 
@@ -59,6 +66,7 @@ function displayInput(){
     questionsEl.classList.add("hide")
     initialsEl.classList.remove("hide")
     clearInterval(clockid);
+    // finalTime = timeEl.textContent
 }
 
 function displayQuestions(){
@@ -106,8 +114,17 @@ function nextQuestion(){
     displayQuestions()
 }
 
+function displayLeaderboard(){
+    enteredInits = enterInitsEl.value
+    initialsEl.classList.add("hide")
+    leaderboardEl.classList.remove("hide")
+    finalScore = enteredInits + " " + finalTime
+    scoreEl.textContent = finalScore
+}
+
 startQuizEl.addEventListener("click", startQuiz)
 answer1El.addEventListener("click", checkAnswer1)
 answer2El.addEventListener("click", checkAnswer2)
 answer3El.addEventListener("click", checkAnswer3)
 answer4El.addEventListener("click", checkAnswer4)
+saveEl.addEventListener("click", displayLeaderboard)
